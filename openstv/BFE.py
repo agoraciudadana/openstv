@@ -14,10 +14,13 @@
 
 __revision__ = "$Id: BFE.py 719 2010-03-01 03:43:54Z jeff.oneill $"
 
-import wx
 import os
 import warnings
-import wx.lib.mixins.listctrl as listmix
+try:
+    import wx
+    import wx.lib.mixins.listctrl as listmix
+except:
+    pass
 
 from openstv.STV import *
 from openstv.ballots import Ballots

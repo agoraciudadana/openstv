@@ -21,9 +21,12 @@ from time import sleep
 from threading import Thread
 from Queue import Queue
 
-import wx
-import wx.html
-import wx.lib.mixins.listctrl as listmix
+try:
+    import wx
+    import wx.html
+    import wx.lib.mixins.listctrl as listmix
+except:
+    pass
 
 from openstv.BFE import BFEFrame
 from openstv.ballots import Ballots
