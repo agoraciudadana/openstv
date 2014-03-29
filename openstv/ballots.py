@@ -331,7 +331,7 @@ class Ballots(object):
     # number "c" to a translated candidate number "c2" taking into account
     # candidates that have been removed from the ballots.  If a candidate is
     # withdrawn, c2c returns None.  
-    c2c = range(self.numCandidates)
+    c2c = list(range(self.numCandidates))
     if removeWithdrawn:
       n = 0
       for i in range(self.numCandidates):
