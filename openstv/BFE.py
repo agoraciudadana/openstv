@@ -73,7 +73,7 @@ class BFEFrame(wx.Frame):
       try:
         self.b = Ballots()
         self.b.loadUnknown(fName)
-      except RuntimeError, msg:
+      except RuntimeError as msg:
         wx.MessageBox(str(msg), "Error", wx.OK|wx.ICON_ERROR)
         self.Destroy()
         return
@@ -173,7 +173,7 @@ class BFEFrame(wx.Frame):
       oldNumBallots = self.b.numBallots
       self.b.appendFile(fName)
       self.b = self.b.getCleanBallots(removeEmpty=False, removeWithdrawn=False)
-    except RuntimeError, msg:
+    except RuntimeError as msg:
       wx.MessageBox(str(msg), "Error", wx.OK|wx.ICON_ERROR)
     else:
       self.Log("Appended %d ballots from file %s." %\
@@ -191,7 +191,7 @@ class BFEFrame(wx.Frame):
 
     try:
       self.b.save()
-    except RuntimeError, msg:
+    except RuntimeError as msg:
       wx.MessageBox(str(msg), "Error", wx.OK|wx.ICON_ERROR)
       return
     self.panel.NeedToSaveBallots = False
@@ -210,7 +210,7 @@ class BFEFrame(wx.Frame):
     # Save
     try:
       self.b.saveAs(fName)
-    except RuntimeError, msg:
+    except RuntimeError as msg:
       wx.MessageBox(str(msg), "Error", wx.OK|wx.ICON_ERROR)
       return
     self.panel.NeedToSaveBallots = False
@@ -228,7 +228,7 @@ class BFEFrame(wx.Frame):
 
     try:
       self.log.SaveFile(self.logfName)
-    except RuntimeError, msg:
+    except RuntimeError as msg:
       wx.MessageBox(str(msg), "Error", wx.OK|wx.ICON_ERROR)
       return
 
@@ -245,7 +245,7 @@ class BFEFrame(wx.Frame):
 
     try:
       self.log.SaveFile(self.logfName)
-    except RuntimeError, msg:
+    except RuntimeError as msg:
       wx.MessageBox(str(msg), "Error", wx.OK|wx.ICON_ERROR)
       return
 

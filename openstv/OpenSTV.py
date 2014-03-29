@@ -352,7 +352,7 @@ to www.OpenSTV.org, or send an email to OpenSTV@googlegroups.com.
     # Load ballots from the file.  These are dirty ballots.
     try:
       election.loadBallots()
-    except RuntimeError, msg:
+    except RuntimeError as msg:
       wx.MessageBox(str(msg), "Error", wx.OK|wx.ICON_ERROR)
       return
 
@@ -378,7 +378,7 @@ to www.OpenSTV.org, or send an email to OpenSTV@googlegroups.com.
 
     try:
       election.runElection()
-    except RuntimeError, msg:
+    except RuntimeError as msg:
       wx.MessageBox(str(msg), "Error", wx.OK|wx.ICON_ERROR)
       return
       
