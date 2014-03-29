@@ -457,7 +457,7 @@ class Ballots(object):
       try:
         self.loader = loaderClass()
         self.loader.load(self, fName)
-      except RuntimeError as (msg,):
+      except RuntimeError as msg:
         errorMsg += "\n" + msg.strip()
       else:
         break
