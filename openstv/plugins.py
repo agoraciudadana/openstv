@@ -191,7 +191,7 @@ class ReportPlugin(object):
 
   def output(self, output):
     """Stream output to destination file-like object."""
-    print >> self.outputFile, output,
+    print(output, file=self.outputFile)
     
   def generateReport(self):
     "Selector for major categories of methods."

@@ -378,7 +378,7 @@ class Spars:
       
     # display the graph
     for i in range(2*ybins+1):
-      print string.join(graph[i], "")
+      print(string.join(graph[i], ""))
 
 ##################################################################
 
@@ -525,41 +525,41 @@ class Bigrams:
   def display(self):
     "Print the bigrams in a nice format."
 
-    print " " * 8 + "|",
+    print(" " * 8 + "|", end="")
     for c in self.c:
-      print "%-5.5s" % (c),
+      print("%-5.5s" % (c), end="")
     if self.NOTA:
-      print "NOTA"
+      print("NOTA")
     else:
-      print
-    print ("-" * 8) + "+" + "-" * (6*(len(self.c)-1+self.NOTA) + 6)
+      print("")
+    print(("-" * 8) + "+" + "-" * (6*(len(self.c)-1+self.NOTA) + 6))
 
-    print "%-8.8s|" % "plen",
+    print("%-8.8s|" % "plen", end="")
     tmp = self.plength[:]
     for c in self.c:
-      print "%.3f" % tmp.pop(0),
-    print
-    print ("-" * 8) + "+" + "-" * (6*(len(self.c)-1+self.NOTA) + 6)
+      print("%.3f" % tmp.pop(0), end="")
+    print("")
+    print(("-" * 8) + "+" + "-" * (6*(len(self.c)-1+self.NOTA) + 6))
 
-    print "%-8.8s|" % "first",
+    print ("%-8.8s|" % "first", end="")
     for c in self.c:
-      print "%.3f" % self.p1[c],
-    print
-    print ("-" * 8) + "+" + "-" * (6*(len(self.c)-1+self.NOTA) + 6)
+      print ("%.3f" % self.p1[c], end="")
+    print("")
+    print (("-" * 8) + "+" + "-" * (6*(len(self.c)-1+self.NOTA) + 6))
 
     for c in self.c:
-      print "%-8.8s|" % c,
+      print("%-8.8s|" % c, end="")
       for d in self.c:
         if c == d:
-          print "     ",
+          print ("     ", end="")
         else:
-          print "%.3f" % (self.p2[c][d]),
+          print ("%.3f" % (self.p2[c][d]), end="")
       if self.NOTA:
-        print "%.3f" % self.p2[c]["NOTA"]
+        print ("%.3f" % self.p2[c]["NOTA"])
       else:
-        print
+        print("")
 
-    print
+    print("")
 
   def initP2Dict(self):
     "Initializes a dict for the bigram probabilities."
