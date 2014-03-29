@@ -532,7 +532,7 @@ remove the ranking and reorder the remaining candidates."""
                           if r != -1 and not isinstance(r, list)]
     
     # Update the list box to show the current ballot
-    for c in xrange(self.b.numCandidates):
+    for c in range(self.b.numCandidates):
       if self.currentBallot.count(c) > 1:
         warnings.warn("Candidate %s appears on ballot %d more than once.  Later rankings ignored." % (self.b.names[c], self.i+1))
       if c in self.currentBallot:

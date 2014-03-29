@@ -71,7 +71,7 @@ class TextBallotLoader(LoaderPlugin):
         line = line[y.end():]
 
       names = self.getBallot(line)
-      for i in xrange(weight):
+      for i in range(weight):
         ballotList.appendBallotUsingNames(names)
         
   def getBallot(self, line):
@@ -99,12 +99,12 @@ candidates' names must be alphanumeric with
 no white space.""")
 
     if packed:
-      for i in xrange(ballotList.numWeightedBallots):
+      for i in range(ballotList.numWeightedBallots):
         weight, ballot = ballotList.getWeightedBallot(i)
         b = [ballotList.names[c] for c in ballot]
         f.write("%d: %s\n" % (weight, ' '.join(b)))
     else:
-      for i in xrange(ballotList.numBallots):
+      for i in range(ballotList.numBallots):
         ballot = ballotList.getBallot(i)
         b = [ballotList.names[c] for c in ballot]
         f.write("%s\n" % (' '.join(b)))

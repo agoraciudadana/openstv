@@ -117,7 +117,7 @@ except RuntimeError as msg:
 
 def doElection(reps=1):
   "run election with repeat count for profiling"
-  for i in xrange(reps):
+  for i in range(reps):
     e = methods[name](cleanBallots)
     if strongTieBreakMethod is not None:
       e.strongTieBreakMethod = strongTieBreakMethod

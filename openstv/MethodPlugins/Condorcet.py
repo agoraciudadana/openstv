@@ -78,7 +78,7 @@ There are three choices for the completion method:</p>
       self.pMat.append([0] * self.b.numCandidates)
 
     # Compute pMat
-    for i in xrange(self.b.numWeightedBallots):
+    for i in range(self.b.numWeightedBallots):
       weight, ballot = self.b.getWeightedBallot(i)
       remainingC = range(self.b.numCandidates)
       for c in ballot:

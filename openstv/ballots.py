@@ -116,7 +116,7 @@ class Ballots(object):
     ballotList.names = self.names[:]
     ballotList.withdrawn = self.withdrawn[:]
     if copyBallots:
-      for i in xrange(self.numBallots):
+      for i in range(self.numBallots):
         ballot = self.getBallot(i)
         ballotID = self.getBallotID(i) if self.customBallotIDs else None
         ballotList.appendBallot(ballot, ballotID)
@@ -221,7 +221,7 @@ class Ballots(object):
     
     sortedBallots = [(str(self.uniqueBallots[i]),
                       self.uniqueBallotCount[i])
-                     for i in xrange(self.numWeightedBallots)]
+                     for i in range(self.numWeightedBallots)]
     sortedBallots.sort()
     return sortedBallots
 
@@ -342,7 +342,7 @@ class Ballots(object):
           c2c[i] -= n
 
     # Loop over ballots and perform requested cleaning
-    for i in xrange(self.numBallots):
+    for i in range(self.numBallots):
       ballot, ballotID = self.getBallotAndID(i)
       seenCandidates = set()
       cleanBallot = [] # This will be a cleaned version of ballot
@@ -406,7 +406,7 @@ class Ballots(object):
             "the names of the candidates, and the withdrawn candidates \n"\
             "must be identical.")
 
-    for i in xrange(ballotList.numBallots):
+    for i in range(ballotList.numBallots):
       ballot = ballotList.getBallot(i)
       ballotID = ballotList.getBallotID(i) if self.customBallotIDs else None
       self.appendBallot(ballot, ballotID)
@@ -505,7 +505,7 @@ class Ballots(object):
     self.uniqueBallotsLookup = {}
 
     # Loop over all the weighted ballots
-    for i in xrange(self.numWeightedBallots):
+    for i in range(self.numWeightedBallots):
       for j, c in enumerate(self.uniqueBallots[i]):
         self.uniqueBallots[i][j] = c2c[c]
       ballotString = str(list(self.uniqueBallots[i]))

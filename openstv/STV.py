@@ -876,7 +876,7 @@ class OrderDependentSTV(STV):
     "Count the first place votes with order dependent rules."
 
     # Allocate votes to candidates bases on the first choices.
-    for i in xrange(self.b.numBallots):
+    for i in range(self.b.numBallots):
       c = self.b.getTopChoiceFromBallot(i, self.continuing)
       if c is not None: 
         self.votes[c].append(i)
@@ -1311,7 +1311,7 @@ class RecursiveSTV(OrderIndependentSTV):
     for c in range(self.b.numCandidates):
       self.keepFactor[0][c] = self.p
 
-    for i in xrange(self.b.numWeightedBallots):
+    for i in range(self.b.numWeightedBallots):
       self.addBallotToTree(self.tree, i)
 
   def addBallotToTree(self, tree, ballotIndex, ballot=""):
