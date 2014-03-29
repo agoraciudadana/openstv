@@ -152,7 +152,7 @@ class BltBallotLoader(LoaderPlugin):
   
   def getNextNonBlankLine(self, f):
     while True:
-      line = f.next()
+      line = f.readline().rstrip("\n")
       if self.blankLineRE.match(line) is None: 
         break
     return line
