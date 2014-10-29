@@ -1,3 +1,4 @@
+from __future__ import print_function
 "Module to load plugins."
 
 ## Copyright (C) 2003-2010 Jeffrey O'Neill

@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 """Model voters with ranked ballot data and count with various voting systems.
 
 VOTING MODELS
