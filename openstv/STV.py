@@ -155,7 +155,7 @@ class ElectionMethod(object):
     "Only attempt to count votes if there are enough candidates and voters."
     
     # some basic minimum requirements
-    if self.b.numCandidates < 2:
+    if self.b.numCandidates < 1:
       raise RuntimeError("""\
 Not enough candidates to run an election.
 Need at least %d candidates but have only %d.""" % (
