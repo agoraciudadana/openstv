@@ -25,15 +25,16 @@ class Borda(NonIterative, MethodPlugin):
   methodName = "Borda"
   longMethodName = "Borda Count"
   status = 1
+  maxChosableOptions = None
 
   htmlBody = """
 <p>With the Borda count, candidates recieve points based on their
-position on the ballots.  For example, if there are 4 candidates, then
-a candidate receives 3 points for every first choice, 2 points for
-every second choice, and 1 point for every third choice.  A candidate
-receives no points if ranked last or not ranked at all.  Borda
-provides some proportionality but not as well as SNTV, IRV, or
-STV.</p>
+position on the ballots and the number of winners.  For example,
+if there are 4 winners, then a candidate receives 3 points for every
+first choice, 2 points for every second choice, and 1 point for
+every third choice.  A candidate receives no points if ranked last
+or not ranked at all.  Borda provides some proportionality but not
+as well as SNTV, IRV, or STV.</p>
 
 <p>As an option, the ballots can by "completed" whereby unranked
 candidates share the remaining points on a ballot.  This option
@@ -70,26 +71,29 @@ his or her first choice candidate.</p>
     "Count the votes using the Borda Count."
 
     # Add up the Borda counts
+    if self.maxChosableOptions is None:
+      self.maxChosableOptions = self.b.numCandidates - 1
+
     for i in range(self.b.numWeightedBallots):
       weight, blt = self.b.getWeightedBallot(i)
       # Ranked candidates get their usual Borda score
       for j, c in enumerate(blt):
-        self.count[c] += self.p * weight * (self.b.numCandidates-j-1)
+        self.count[c] += self.p * weight * (self.maxChosableOptions-j)
 
       # If doing ballot completion, then unranked candidates share the
       # remaining Borda score.  Otherwise, goes to exhausted pile.
-      if len(blt) < self.b.numCandidates-1:
-        nMissingCand = self.b.numCandidates - len(blt)
+      if len(blt) < self.maxChosableOptions:
+        nMissingCand = self.maxChosableOptions - len(blt)
         # missingCandCount = nMissingCand*(nMissingCand-1)/2/nMissingCand
         # simplifies to  missingCandCount = (nMissingCand-1)/2
         if self.ballotCompletion == "On":
-          for c in range(self.b.numCandidates):
+          for c in range(self.maxChosableOptions):
             if c not in blt:
               self.count[c] += self.p * weight * \
-                                  (nMissingCand-1) / 2
+                                  nMissingCand / 2
         else:
           self.exhausted += self.p * weight * \
-                            (nMissingCand-1) * nMissingCand / 2
+                            nMissingCand * nMissingCand / 2
 
     self.msg += "Borda count totals. "
 
